@@ -27,11 +27,12 @@ export const GlobalProvider = ({ children }) => {
   const addTask = task => dispatch({type: "ADD-TASK", payload: {...task, id: v4()} })
   const updateTask = task => dispatch({type: "UP-TASK", payload: task})
   const deleteTasks = task => dispatch({ type: "DEL-TASKS"})
-  const deleteTask = id => dispatch({type: "DEL-TASK", payload: id})
+  const deleteTask = id => dispatch({type: "DEL-TASK", payload:id})
+  const updatedTaskDone = id => dispatch({type: "TOGGLE-DONE-TASK", payload: id})
 
   return (
     <GlobalContext.Provider
-      value={{...state, addTask, deleteTasks, deleteTask, updateTask}}
+      value={{...state, addTask, deleteTasks, deleteTask, updateTask, updatedTaskDone}}
     >
       {children}
     </GlobalContext.Provider>

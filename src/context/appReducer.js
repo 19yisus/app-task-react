@@ -21,12 +21,17 @@ export default function appReducer(state, action) {
     break;
 
     case 'DEL-TASK':
-      console.log("DELETE ONE TASK")
       return { tasks: state.tasks.filter( task => task.id !== action.payload)};
+    break;
+
+    case 'TOGGLE-DONE-TASK':
+      console.log("TOGGLE")
+      return { tasks: state.tasks.map( task => task.id === action.payload ? {...task,done: !task.done} : task )}
     break;
 
     default:
       console.error("Nothing for to do");
+      return { tasks: state }
     break;
   }
 }
